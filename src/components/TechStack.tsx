@@ -3,17 +3,17 @@ import "./TechStack.css";
 // Replace these placeholders with your actual YouTube video links
 // e.g., "https://www.youtube.com/watch?v=dQw4w9WgXcQ" or "https://youtu.be/dQw4w9WgXcQ"
 const youtubeLinks = [
-  "", "", "", "", "", ""
+  "https://youtu.be/YnkFBO01fno", "https://youtu.be/FVl4IFH4eM4", "https://youtu.be/vouEPllNYE0", "https://youtu.be/t2tx_PnvaT8", "https://youtu.be/SOghLZxnV-8", "https://youtu.be/MUzIHcR-4zs"
 ];
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return "";
   let videoId = "";
-  
+
   // Handle youtu.be format
   if (url.includes("youtu.be/")) {
     videoId = url.split("youtu.be/")[1]?.split("?")[0];
-  } 
+  }
   // Handle youtube.com/watch?v= format
   else if (url.includes("youtube.com/watch")) {
     const urlParams = new URLSearchParams(url.split("?")[1]);
@@ -38,20 +38,20 @@ const TechStack = () => {
       <div className="video-grid">
         {youtubeLinks.map((url, i) => (
           <div key={i} className="video-box" style={{ pointerEvents: 'none' }}>
-             {url ? (
-               <iframe 
-                 src={getYouTubeEmbedUrl(url)} 
-                 allow="autoplay; encrypted-media" 
-                 allowFullScreen
-                 frameBorder="0"
-                 className="edit-video"
-                 title={`Edit Video ${i + 1}`}
-               ></iframe>
-             ) : (
-               <div className="edit-video placeholder" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', border: '1px dashed #333' }}>
-                 <span>Add YouTube Link Here</span>
-               </div>
-             )}
+            {url ? (
+              <iframe
+                src={getYouTubeEmbedUrl(url)}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                frameBorder="0"
+                className="edit-video"
+                title={`Edit Video ${i + 1}`}
+              ></iframe>
+            ) : (
+              <div className="edit-video placeholder" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666', border: '1px dashed #333' }}>
+                <span>Add YouTube Link Here</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
